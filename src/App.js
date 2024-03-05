@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Container from './Components/Container/Container';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import NavBar from './Components/Navbar/Navbar';
+import Comic from './Components/Comic/Comic';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <NavBar/>
+        <Routes> {/* EL COMPONENTE ROUTES MUESTRA LOS COMPONENTES SI SE NECEITAN O NO */}
+          <Route path='/' element={<Container/>}/>    {/*  PATH MUESTRA LA RUTA Y ELEMENT EL COMPONENTE QUE TIENE QUE MOSTRAR EN ESA RUTA*/}
+          <Route path='/comics/:personajeId' element={<Comic/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
